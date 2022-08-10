@@ -8,6 +8,8 @@ const fs = require('fs');
 
 // APP STARTS WITH PROMPTING ABOUT THE MANAGERS INFO
 // CAN TRY DO THE VALIDATION BUT MAYBE LEAVE THAT FOR LATER IF HAVE TIME
+
+
 // Function that prompts the user about manager information
 const promptManager = () => {
     return inquirer.prompt([{
@@ -26,6 +28,60 @@ const promptManager = () => {
         type: "number",
         message: "What is the team manager's office number?",
         name: "managerOfficeNum"
+    }])
+    .then((data) => {
+        console.log(data)
+        newEmployeeOrNone()
+    })
+}
+
+
+
+// Function that prompts the user for engineer information
+const promptEngineer = () => {
+    return inquirer.prompt([{
+        type: "input",
+        message: "What is your engineer's name?",
+        name: "engineerName"
+    }, {
+        type: "number",
+        message: "What is your engineer's id?",
+        name: "engineerId"
+    }, {
+        type: "input",
+        message: "What is your engineer's email?",
+        name: "engineerEmail"
+    }, {
+        type: "number",
+        message: "What is your engineer's GitHub?",
+        name: "engineerGithub"
+    }])
+    .then((data) => {
+        console.log(data)
+        newEmployeeOrNone()
+    })
+}
+
+
+
+// Function that prompts the user for intern information
+const promptIntern = () => {
+    return inquirer.prompt([{
+        type: "input",
+        message: "What is your intern's name?",
+        name: "internName"
+    }, {
+        type: "number",
+        message: "What is your intern's id?",
+        name: "internId"
+    }, {
+        type: "input",
+        message: "What is your intern's email?",
+        name: "internEmail"
+    }, {
+        type: "number",
+        message: "What is your intern's school?",
+        name: "internSchool"
     }])
     .then((data) => {
         console.log(data)
