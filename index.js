@@ -28,9 +28,12 @@ const promptManager = () => {
         name: "managerOfficeNum"
     }])
     .then((data) => {
-        
+        console.log(data)
+        newEmployeeOrNone()
     })
 }
+
+// AFTER THE MANAGER PROMPT THEN CALL AFUNCTION THAT IS A LIST TO CREATE ENGINEER, INTERN OR NONE AND THEN THAT ANSWER WILL PROMPT THE OTHER FUNCTIONS AND HAVE THEM CALL THAT FUNCTION AGAIN AFTER BEING COMPLETE
 
 
 // AFTER MANAGER INFO THEN ASKED IF THEY WANT TO ADD IN ENGINEER, INTERN OR NO ONE
@@ -43,6 +46,18 @@ const promptManager = () => {
 
 
 // AFTER SELECTING ADD NO MORE MEMBERS IT THEN RENDERS THE HTML AND CSS FILES OF THE EMPLOYEES
+
+// Function that prompts the user to create another employee or leave
+const newEmployeeOrNone = () => {
+    return inquirer.prompt([{
+        type: "list",
+        message: "What type of team member would you like to add?",
+        name: "employeeChoice",
+        choices: ["Engineer", "Intern", "I don't want to add anymore"]
+    }])
+}
+
+
 // Function that is called on initialization and starts the application
 const init = () =>{
     console.log("Welcome to the team profile generator! \nUse 'npm run reset' to reset the dist/ folder.\n\nPlease build your team here!");
