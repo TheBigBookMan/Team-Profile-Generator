@@ -4,9 +4,6 @@ const fs = require('fs');
 
 // NEED TO HAVE TEST JS FILES AS WELL
 
-
-
-// APP STARTS WITH PROMPTING ABOUT THE MANAGERS INFO
 // CAN TRY DO THE VALIDATION BUT MAYBE LEAVE THAT FOR LATER IF HAVE TIME
 
 
@@ -31,6 +28,7 @@ const promptManager = () => {
     }])
     .then((data) => {
         // console.log(data)
+        // const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOfficeNum)
         newEmployeeOrNone()
     })
 }
@@ -92,7 +90,6 @@ const promptIntern = () => {
 // AFTER THE MANAGER PROMPT THEN CALL AFUNCTION THAT IS A LIST TO CREATE ENGINEER, INTERN OR NONE AND THEN THAT ANSWER WILL PROMPT THE OTHER FUNCTIONS AND HAVE THEM CALL THAT FUNCTION AGAIN AFTER BEING COMPLETE
 
 
-// AFTER MANAGER INFO THEN ASKED IF THEY WANT TO ADD IN ENGINEER, INTERN OR NO ONE
 
 
 // SUPER IMPORTANT TO FIGURE OUT ALGORITHM FOR THE SEPCIFIC AMOUNT OF EMPLOYEES NEEDING TO BE CREATED ON THE HTML SIDE---- MIGHT HAVE TO DO WITH AN ARRAY AMOUNT THAT THEN GETS PUT INTO A FUNCTION TO CREATE IT AND THEN TEMPLATE THAT INTO THE GENERATE ````` SPOT
@@ -130,5 +127,5 @@ const init = () =>{
     promptManager();
 }
 
-
+// Calling the initialization function on start 
 init();
