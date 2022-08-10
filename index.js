@@ -1,8 +1,13 @@
 // Install packages
 const inquirer = require('inquirer');
 const fs = require('fs');
+const Employee = require('./lib/Employees' )
+const Manager = require('./lib/manager' )
+const Engineer = require('./lib/engineer' )
+const Intern = require('./lib/intern' )
 
 // NEED TO HAVE TEST JS FILES AS WELL
+
 
 // CAN TRY DO THE VALIDATION BUT MAYBE LEAVE THAT FOR LATER IF HAVE TIME
 
@@ -122,10 +127,10 @@ const newEmployeeOrNone = () => {
 
 
 // Function that is called on initialization and starts the application
-const init = () =>{
-    console.log("Welcome to the team profile generator! \nUse 'npm run reset' to reset the dist/ folder.\n\nPlease build your team here!");
-    promptManager();
-}
+// const init = () =>{
+//     console.log("Welcome to the team profile generator! \nUse 'npm run reset' to reset the dist/ folder.\n\nPlease build your team here!");
+//     promptManager();
+// }
 
-// Calling the initialization function on start 
-init();
+// // Calling the initialization function on start 
+// init();
