@@ -30,7 +30,7 @@ const promptManager = () => {
         name: "managerOfficeNum"
     }])
     .then((data) => {
-        console.log(data)
+        // console.log(data)
         newEmployeeOrNone()
     })
 }
@@ -111,6 +111,16 @@ const newEmployeeOrNone = () => {
         name: "employeeChoice",
         choices: ["Engineer", "Intern", "I don't want to add anymore"]
     }])
+    .then((data) => {
+        if(data.employeeChoice === "Engineer") {
+            promptEngineer();
+        } else if(data.employeeChoice === "Intern") {
+            promptIntern();
+        } else {
+            //WILL PROBABLY NEED SOMETHING IN HERE LATER
+            return;
+        }
+    })
 }
 
 
