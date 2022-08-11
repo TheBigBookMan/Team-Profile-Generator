@@ -8,6 +8,12 @@ const Intern = require('./lib/intern' );
 const generateHtml = require('./src/generatehtml');
 const generateCss = require('./src/generatecss');
 
+// Global variables
+var employeesArr = [];
+var manager;
+var engineer;
+var intern;
+
 // NEED TO HAVE TEST JS FILES AS WELL
 
 
@@ -35,11 +41,12 @@ const promptManager = () => {
     }])
     .then((data) => {
         // console.log(data)
-        // const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOfficeNum)
+        manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOfficeNum)
+        employeesArr.push(manager)
+        // THIS ABOVE MIGHT BE THE WAY TO DO IT
         newEmployeeOrNone()
     })
 }
-
 
 
 // Function that prompts the user for engineer information
@@ -57,12 +64,13 @@ const promptEngineer = () => {
         message: "What is your engineer's email?",
         name: "engineerEmail"
     }, {
-        type: "number",
+        type: "input",
         message: "What is your engineer's GitHub?",
         name: "engineerGithub"
     }])
     .then((data) => {
-        console.log(data)
+        engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub)
+        employeesArr.push(engineer)
         newEmployeeOrNone()
     })
 }
@@ -84,12 +92,13 @@ const promptIntern = () => {
         message: "What is your intern's email?",
         name: "internEmail"
     }, {
-        type: "number",
+        type: "input",
         message: "What is your intern's school?",
         name: "internSchool"
     }])
     .then((data) => {
-        console.log(data)
+        intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool)
+        employeesArr.push(intern)
         newEmployeeOrNone()
     })
 }
@@ -117,6 +126,7 @@ const newEmployeeOrNone = () => {
             promptIntern();
         } else {
             //WILL PROBABLY NEED SOMETHING IN HERE LATER
+            console.log(employeesArr)
             return;
         }
     })
