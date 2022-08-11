@@ -1,10 +1,12 @@
 // Install packages
 const inquirer = require('inquirer');
 const fs = require('fs');
-const Employee = require('./lib/Employees' )
-const Manager = require('./lib/manager' )
-const Engineer = require('./lib/engineer' )
-const Intern = require('./lib/intern' )
+const Employee = require('./lib/Employees' );
+const Manager = require('./lib/manager' );
+const Engineer = require('./lib/engineer' );
+const Intern = require('./lib/intern' );
+const generateHtml = require('./src/generatehtml');
+const generateCss = require('./src/generatecss');
 
 // NEED TO HAVE TEST JS FILES AS WELL
 
@@ -92,15 +94,10 @@ const promptIntern = () => {
     })
 }
 
-// AFTER THE MANAGER PROMPT THEN CALL AFUNCTION THAT IS A LIST TO CREATE ENGINEER, INTERN OR NONE AND THEN THAT ANSWER WILL PROMPT THE OTHER FUNCTIONS AND HAVE THEM CALL THAT FUNCTION AGAIN AFTER BEING COMPLETE
-
-
+// PUT THE INFO FROM THE INQUIRER RESPONSE DATA INTO CLASS CREATE VARIABLES THAT WILL CALL ON THE CLASSES!!!!!!!!!!!!!!!
 
 
 // SUPER IMPORTANT TO FIGURE OUT ALGORITHM FOR THE SEPCIFIC AMOUNT OF EMPLOYEES NEEDING TO BE CREATED ON THE HTML SIDE---- MIGHT HAVE TO DO WITH AN ARRAY AMOUNT THAT THEN GETS PUT INTO A FUNCTION TO CREATE IT AND THEN TEMPLATE THAT INTO THE GENERATE ````` SPOT
-
-
-// NEED TO HAVE CLASSES FOR THE EMPLOYEE AND THEN EACH SUBCLASS (MANAGER, ENGINEER AND INTERN HAVE UNIQUE PROPERTIES AS WELL)
 
 
 // AFTER SELECTING ADD NO MORE MEMBERS IT THEN RENDERS THE HTML AND CSS FILES OF THE EMPLOYEES
@@ -127,10 +124,10 @@ const newEmployeeOrNone = () => {
 
 
 // Function that is called on initialization and starts the application
-// const init = () =>{
-//     console.log("Welcome to the team profile generator! \nUse 'npm run reset' to reset the dist/ folder.\n\nPlease build your team here!");
-//     promptManager();
-// }
+const init = () =>{
+    console.log("Welcome to the team profile generator! \nUse 'npm run reset' to reset the dist/ folder.\n\nPlease build your team here!");
+    promptManager();
+}
 
 // // Calling the initialization function on start 
-// init();
+init();
