@@ -38,14 +38,13 @@ const promptManager = () => {
         name: "managerOfficeNum"
     }])
     .then((data) => {
-        // console.log(data)
         manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOfficeNum)
         employeesArr.push(manager)
+        console.log(manager)
         // THIS ABOVE MIGHT BE THE WAY TO DO IT
-        newEmployeeOrNone()
+        newEmployeeOrNone(data)
     })
-}
-
+};
 
 // Function that prompts the user for engineer information
 const promptEngineer = () => {
@@ -67,13 +66,12 @@ const promptEngineer = () => {
         name: "engineerGithub"
     }])
     .then((data) => {
+        // console.log(data)
         engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub)
         employeesArr.push(engineer)
-        newEmployeeOrNone()
+        newEmployeeOrNone(data)
     })
-}
-
-
+};
 
 // Function that prompts the user for intern information
 const promptIntern = () => {
@@ -97,52 +95,44 @@ const promptIntern = () => {
     .then((data) => {
         intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool)
         employeesArr.push(intern)
-        newEmployeeOrNone()
+        newEmployeeOrNone(data)
     })
-}
+};
 
 
 // SUPER IMPORTANT TO FIGURE OUT ALGORITHM FOR THE SEPCIFIC AMOUNT OF EMPLOYEES NEEDING TO BE CREATED ON THE HTML SIDE---- MIGHT HAVE TO DO WITH AN ARRAY AMOUNT THAT THEN GETS PUT INTO A FUNCTION TO CREATE IT AND THEN TEMPLATE THAT INTO THE GENERATE ````` SPOT
 
-
-// AFTER SELECTING ADD NO MORE MEMBERS IT THEN RENDERS THE HTML AND CSS FILES OF THE EMPLOYEES
-
-
 // Function that writes the html and css files by calling the generateHtml template content and generateCss template content
-const createFiles = () => {
-    console.log(generateCss)
+const createFiles = (data) => {
+    console.log(employeesArr)
     fs.writeFile("./dist/style.css", generateCss(), (err) => err ? console.log(err) : console.log("CSS file created successfully!"));
-    fs.writeFile("./dist/index.html", generateHtml(), (err) => err ? console.log(err) : console.log("HTML file created successfully!"));
-}
-
+    fs.writeFile("./dist/index.html", generateHtml(employeesArr), (err) => err ? console.log(err) : console.log("HTML file created successfully!"));
+};
 
 // Function that prompts the user to create another employee or leave
-const newEmployeeOrNone = () => {
+const newEmployeeOrNone = (data) => {
     return inquirer.prompt([{
         type: "list",
         message: "What type of team member would you like to add?",
         name: "employeeChoice",
         choices: ["Engineer", "Intern", "I don't want to add anymore"]
     }])
-    .then((data) => {
-        if(data.employeeChoice === "Engineer") {
+    .then((response) => {
+        if(response.employeeChoice === "Engineer") {
             promptEngineer();
-        } else if(data.employeeChoice === "Intern") {
+        } else if(response.employeeChoice === "Intern") {
             promptIntern();
         } else {
-            createFiles();
-            console.log(employeesArr)
+            createFiles(data);
             return;
-        }
-    })
-}
-
+        };
+    })};
 
 // Function that is called on initialization and starts the application
 const init = () =>{
     console.log("Welcome to the team profile generator! \nUse 'npm run reset' to reset the dist/ folder.\n\nPlease build your team here!");
     promptManager();
-}
+};
 
 // // Calling the initialization function on start 
 init();

@@ -6,7 +6,7 @@
 // NEED TO ADD ON THE CARD THE A HREF FOR THE GITHUB LINK AND EMAIL OPEN TO DEFAULT EMAIL BROWSERs
 
 // Function that returns a template HTML layout
-const generateHtml = () => {
+const generateHtml = (employeesArr) => {
     return `
 <!DOCTYPE html>
 <html lang="en">
@@ -26,13 +26,13 @@ const generateHtml = () => {
             <ul class="list-employees">
                 <li class="employee">
                     <div class="employee-header">
-                        <h3 class="employee-name">Jared</h3>
-                        <h4 class="employee-role">Manager</h4>
+                        <h3 class="employee-name">${employeesArr[0].name}</h3>
+                        <h4 class="employee-role">${employeesArr[0].getRole()}</h4>
                     </div>
                     <div class="employee-info">
-                        <p class="employee-id details">ID: 1</p>
-                        <p class="employee-email details">EMail: bsmerd@adam.comau</p>
-                        <p class="employee-extra details">Office NUmber 1</p>
+                        <p class="employee-id details">ID: ${employeesArr[0].id}</p>
+                        <p class="employee-email details">Email: ${employeesArr[0].email}</p>
+                        <p class="employee-extra details">Office Number: ${employeesArr[0].officeNumber}</p>
                     </div>
                 </li>
             </ul>
