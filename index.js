@@ -16,9 +16,7 @@ var intern;
 
 // NEED TO HAVE TEST JS FILES AS WELL
 
-
 // CAN TRY DO THE VALIDATION BUT MAYBE LEAVE THAT FOR LATER IF HAVE TIME
-
 
 // Function that prompts the user about manager information
 const promptManager = () => {
@@ -103,13 +101,20 @@ const promptIntern = () => {
     })
 }
 
-// PUT THE INFO FROM THE INQUIRER RESPONSE DATA INTO CLASS CREATE VARIABLES THAT WILL CALL ON THE CLASSES!!!!!!!!!!!!!!!
-
 
 // SUPER IMPORTANT TO FIGURE OUT ALGORITHM FOR THE SEPCIFIC AMOUNT OF EMPLOYEES NEEDING TO BE CREATED ON THE HTML SIDE---- MIGHT HAVE TO DO WITH AN ARRAY AMOUNT THAT THEN GETS PUT INTO A FUNCTION TO CREATE IT AND THEN TEMPLATE THAT INTO THE GENERATE ````` SPOT
 
 
 // AFTER SELECTING ADD NO MORE MEMBERS IT THEN RENDERS THE HTML AND CSS FILES OF THE EMPLOYEES
+
+
+// Function that writes the html and css files by calling the generateHtml template content and generateCss template content
+const createFiles = () => {
+    console.log(generateCss)
+    fs.writeFile("./dist/style.css", generateCss(), (err) => err ? console.log(err) : console.log("CSS file created successfully!"));
+    fs.writeFile("./dist/index.html", generateHtml(), (err) => err ? console.log(err) : console.log("HTML file created successfully!"));
+}
+
 
 // Function that prompts the user to create another employee or leave
 const newEmployeeOrNone = () => {
@@ -125,7 +130,7 @@ const newEmployeeOrNone = () => {
         } else if(data.employeeChoice === "Intern") {
             promptIntern();
         } else {
-            //WILL PROBABLY NEED SOMETHING IN HERE LATER
+            createFiles();
             console.log(employeesArr)
             return;
         }

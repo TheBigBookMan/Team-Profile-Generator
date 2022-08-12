@@ -1,7 +1,7 @@
 
-
-
-`
+// Function that returns the CSS template
+const generateCss = () => {
+    return `
 header {
     background-color: red;
     height: 80px;
@@ -18,7 +18,6 @@ main {
 .team-container {
     height: 100%;
     width: 75%;
-
 }
 
 .list-employees {
@@ -54,3 +53,7 @@ main {
     padding: 5px;
 }
 `
+};
+
+// Export the generateCss function to module exports
+module.exports = generateCss;

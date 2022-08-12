@@ -5,7 +5,9 @@
 
 // NEED TO ADD ON THE CARD THE A HREF FOR THE GITHUB LINK AND EMAIL OPEN TO DEFAULT EMAIL BROWSERs
 
-`
+// Function that returns a template HTML layout
+const generateHtml = () => {
+    return `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,3 +42,7 @@
 </body>
 </html>
 `
+}
+
+// Exporting the generateHtml function to the module exports
+module.exports = generateHtml;
