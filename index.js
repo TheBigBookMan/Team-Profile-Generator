@@ -8,6 +8,9 @@ const Intern = require('./lib/intern' );
 const generateHtml = require('./src/generatehtml');
 const generateCss = require('./src/generatecss');
 
+//DELETE THIS ONLY USING TEMP
+// const determineEmployee = require('./src/generatehtml')
+
 // Global variables
 var employeesArr = [];
 var manager;
@@ -40,8 +43,6 @@ const promptManager = () => {
     .then((data) => {
         manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOfficeNum)
         employeesArr.push(manager)
-        console.log(manager)
-        // THIS ABOVE MIGHT BE THE WAY TO DO IT
         newEmployeeOrNone(data)
     })
 };
@@ -99,13 +100,13 @@ const promptIntern = () => {
     })
 };
 
-
-// SUPER IMPORTANT TO FIGURE OUT ALGORITHM FOR THE SEPCIFIC AMOUNT OF EMPLOYEES NEEDING TO BE CREATED ON THE HTML SIDE---- MIGHT HAVE TO DO WITH AN ARRAY AMOUNT THAT THEN GETS PUT INTO A FUNCTION TO CREATE IT AND THEN TEMPLATE THAT INTO THE GENERATE ````` SPOT
+// IF CAN GET GENERATE HTML WITHOUT NEEDING THE DATA PARAMETER THEN TAKE OUT ALL THE PARAMTERS AND ARGUEMENTS THAT ARE DATA
 
 // Function that writes the html and css files by calling the generateHtml template content and generateCss template content
 const createFiles = (data) => {
-    console.log(employeesArr)
+    // console.log(employeesArr)
     fs.writeFile("./dist/style.css", generateCss(), (err) => err ? console.log(err) : console.log("CSS file created successfully!"));
+
     fs.writeFile("./dist/index.html", generateHtml(employeesArr), (err) => err ? console.log(err) : console.log("HTML file created successfully!"));
 };
 
@@ -123,6 +124,8 @@ const newEmployeeOrNone = (data) => {
         } else if(response.employeeChoice === "Intern") {
             promptIntern();
         } else {
+            
+            // determineEmployee(employeesArr)
             createFiles(data);
             return;
         };
