@@ -8,9 +8,6 @@ const Intern = require('./lib/intern' );
 const generateHtml = require('./src/generatehtml');
 const generateCss = require('./src/generatecss');
 
-//DELETE THIS ONLY USING TEMP
-// const generateEmployee = require('./src/generatehtml')
-
 // Global variables
 var employeesArr = [];
 var manager;
@@ -42,9 +39,9 @@ const promptManager = () => {
         name: "managerOfficeNum"
     }])
     .then((data) => {
-        manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOfficeNum)
-        employeesArr.push(manager)
-        newEmployeeOrNone(data)
+        manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOfficeNum);
+        employeesArr.push(manager);
+        newEmployeeOrNone();
     })
 };
 
@@ -69,9 +66,9 @@ const promptEngineer = () => {
     }])
     .then((data) => {
         // console.log(data)
-        engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub)
-        employeesArr.push(engineer)
-        newEmployeeOrNone(data)
+        engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub);
+        employeesArr.push(engineer);
+        newEmployeeOrNone();
     })
 };
 
@@ -95,13 +92,11 @@ const promptIntern = () => {
         name: "internSchool"
     }])
     .then((data) => {
-        intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool)
-        employeesArr.push(intern)
-        newEmployeeOrNone(data)
+        intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool);
+        employeesArr.push(intern);
+        newEmployeeOrNone();
     })
 };
-
-// IF CAN GET GENERATE HTML WITHOUT NEEDING THE DATA PARAMETER THEN TAKE OUT ALL THE PARAMTERS AND ARGUEMENTS THAT ARE DATA
 
 // Function that writes the html and css files by calling the generateHtml template content and generateCss template content
 const createFiles = () => {
@@ -109,12 +104,10 @@ const createFiles = () => {
     fs.writeFile("./dist/style.css", generateCss(), (err) => err ? console.log(err) : console.log("CSS file created successfully!"));
 
     fs.writeFile("./dist/index.html", generateHtml(employeesArr), (err) => err ? console.log(err) : console.log("HTML file created successfully!"));
-
-    // fs.writeFile("./dist/index.html", generateEmployee(employeesArr[1], "Github", employeesArr[1].github), (err) => err ? console.log(err) : console.log("HTML file created successfully!"));
 };
 
 // Function that prompts the user to create another employee or leave
-const newEmployeeOrNone = (data) => {
+const newEmployeeOrNone = () => {
     return inquirer.prompt([{
         type: "list",
         message: "What type of team member would you like to add?",
@@ -127,8 +120,6 @@ const newEmployeeOrNone = (data) => {
         } else if(response.employeeChoice === "Intern") {
             promptIntern();
         } else {
-            
-            // determineEmployee(employeesArr)
             createFiles();
             return;
         };
@@ -140,5 +131,5 @@ const init = () =>{
     promptManager();
 };
 
-// // Calling the initialization function on start 
+// Calling the initialization function on start 
 init();

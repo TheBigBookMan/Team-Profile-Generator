@@ -1,29 +1,21 @@
-
-// DONT FORGET TO MAKE FUNCTION THAT DETERMINES IF MANAGER, INTERN OR ENGINEER AND THEN THAT PUTS IN THAT SPECIFIC ONE INTO THE RETURN FUNCTION FOR TEMPLAYTTE---- MAYBE CREATE A TEMPLATE SECTION FOR THAT AND THEN HAVE TEMPLATE PROPERTIES THAT CHANGE AND THEN RETURN THAT FUNCTION INTO THE MAIN FUNCTION PAGE GENERATOR
+// Global variables
 var liEmployee;
 var newLi;
 var employeeLi;
 
 // Function that determines what type of employee has been listed
-const determineEmployee = employee => {
-    // console.log(employeesArr)
-    console.log("_________")
-    
-        if(employee.getRole() == "Engineer") {
-            var engineerExtra = "Github";
-            var engineerGithub = `<a href="https://github.com/${employee.github}" target="_blank"> ${employee.github}</a>`;
-            employeeLi = generateEmployee(employee, engineerExtra, engineerGithub)
-            console.log(employee, engineerExtra, engineerGithub)
-            console.log("engineer")
-            return employeeLi;
-        }else if(employee.getRole() == "Intern"){
-            var internExtra = "School";
-            var internSchool = employee.school;
-            employeeLi = generateEmployee(employee, internExtra, internSchool)
-            console.log("Intern")
-            return employeeLi;
-        }
-    
+const determineEmployee = employee => {    
+    if(employee.getRole() == "Engineer") {
+        var engineerExtra = "Github";
+        var engineerGithub = `<a href="https://github.com/${employee.github}" target="_blank"> ${employee.github}</a>`;
+        employeeLi = generateEmployee(employee, engineerExtra, engineerGithub);
+        return employeeLi;
+    }else if(employee.getRole() == "Intern"){
+        var internExtra = "School";
+        var internSchool = employee.school;
+        employeeLi = generateEmployee(employee, internExtra, internSchool);
+        return employeeLi;
+    }
 };
 
 // Function that creates the list template for the main generateHtml function
@@ -39,13 +31,9 @@ const generateEmployee = (employee, employeeExtra, employeeExtraVariable) => {
                         <p class="employee-email details">Email: ${employee.email}</p>
                         <p class="employee-extra details">${employeeExtra}: ${employeeExtraVariable}</p>
                     </div>
-                </li>`
-    console.log(liEmployee)
+                </li>`;
     return liEmployee;
 };
-
-
-// SUPER IMPORTANT TO FIGURE OUT ALGORITHM FOR THE SEPCIFIC AMOUNT OF EMPLOYEES NEEDING TO BE CREATED ON THE HTML SIDE---- MIGHT HAVE TO DO WITH AN ARRAY AMOUNT THAT THEN GETS PUT INTO A FUNCTION TO CREATE IT AND THEN TEMPLATE THAT INTO THE GENERATE ````` SPOT
 
 // NEED TO ADD ON THE CARD THE A HREF FOR THE GITHUB LINK AND EMAIL OPEN TO DEFAULT EMAIL BROWSERs
 
@@ -79,11 +67,10 @@ const generateHtml = (employeesArr) => {
                         <p class="employee-extra details">Office Number: ${employeesArr[0].officeNumber}</p>
                     </div>
                 </li>
-                `
-    // ADD IN HERE AN IF STATEMENT CHECKING IF LENGTH OF EMPLOYEES ARRAY IS GREATER THAN 1 AND IF IT IS THEN DO FOR LOOP, IF NOT THEN RETURN NOTHING AND JUST HAVE TOP AND BOTTOM JOIN
+                `;
+    // For loop to add in the <li></li> sections to the html file with information about each employee
     for(let i = 1; i < employeesArr.length; i++) {
-        newLi = determineEmployee(employeesArr[i])
-        console.log(newLi)
+        newLi = determineEmployee(employeesArr[i]);
         mainHtmlTop += newLi; 
     }
     var mainHtmlBottom = `
@@ -92,11 +79,9 @@ const generateHtml = (employeesArr) => {
     </main>
 </body>
 </html>
-`
+`;
     return mainHtmlTop + mainHtmlBottom;
-}
+};
 
 // Exporting the functions to the module exports
-
 module.exports = generateHtml;
-// module.exports = generateEmployee;
