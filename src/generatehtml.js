@@ -1,35 +1,34 @@
 
 // DONT FORGET TO MAKE FUNCTION THAT DETERMINES IF MANAGER, INTERN OR ENGINEER AND THEN THAT PUTS IN THAT SPECIFIC ONE INTO THE RETURN FUNCTION FOR TEMPLAYTTE---- MAYBE CREATE A TEMPLATE SECTION FOR THAT AND THEN HAVE TEMPLATE PROPERTIES THAT CHANGE AND THEN RETURN THAT FUNCTION INTO THE MAIN FUNCTION PAGE GENERATOR
-
-
-// MAKE A TEMPLATE <LI> </LI> AND THEN ADD A FOR LOOP ITERATING OVER THE EMPLOYEESARRAY THAT THEN WILL USE THE OBJETS DATA IN THE TEMPLATES
-
-
-// A FUNCTON THAT IF/ELSE STATEMENT FOR EACH TYPE EMPLOYEE AND THEN EACH ONE OF THOSE WILL SEND THE OBJET INFO TO A TEMPLATE <LI></LI> AND THEN THAT WILL SEND THROUGH TO THE MAIN BODY WITH FUNCTION CALL
+var liEmployee;
+var newLi;
+var employeeLi;
 
 // Function that determines what type of employee has been listed
-const determineEmployee = employeesArr => {
-    console.log(employeesArr)
+const determineEmployee = employee => {
+    // console.log(employeesArr)
     console.log("_________")
-    for (let i = 1; i < employeesArr.length; i++) {
-        if(employeesArr[i].getRole() == "Engineer") {
-            var engineerExtra = "Github";
-            var engineerGithub = employeesArr[i].github;
-            generateEmployee(employeesArr[i], engineerExtra, engineerGithub)
-            console.log("engineer")
-        }else if(employeesArr[i].getRole() == "Intern"){
-            var internExtra = "School";
-            var internSchool = employeesArr[i].school;
-            generateEmployee(employeesArr[i], internExtra, internSchool)
-            console.log("Intern")
-        }
-    }
     
-}
+        if(employee.getRole() == "Engineer") {
+            var engineerExtra = "Github";
+            var engineerGithub = `<a href="https://github.com/${employee.github}" target="_blank"> ${employee.github}</a>`;
+            employeeLi = generateEmployee(employee, engineerExtra, engineerGithub)
+            console.log(employee, engineerExtra, engineerGithub)
+            console.log("engineer")
+            return employeeLi;
+        }else if(employee.getRole() == "Intern"){
+            var internExtra = "School";
+            var internSchool = employee.school;
+            employeeLi = generateEmployee(employee, internExtra, internSchool)
+            console.log("Intern")
+            return employeeLi;
+        }
+    
+};
 
 // Function that creates the list template for the main generateHtml function
 const generateEmployee = (employee, employeeExtra, employeeExtraVariable) => {
-    return `
+    liEmployee = `
                 <li class="employee">
                     <div class="employee-header">
                         <h3 class="employee-name">${employee.name}</h3>
@@ -41,6 +40,8 @@ const generateEmployee = (employee, employeeExtra, employeeExtraVariable) => {
                         <p class="employee-extra details">${employeeExtra}: ${employeeExtraVariable}</p>
                     </div>
                 </li>`
+    console.log(liEmployee)
+    return liEmployee;
 };
 
 
@@ -50,7 +51,7 @@ const generateEmployee = (employee, employeeExtra, employeeExtraVariable) => {
 
 // Function that returns a template HTML layout
 const generateHtml = (employeesArr) => {
-    return `
+    var mainHtmlTop =  `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,17 +79,24 @@ const generateHtml = (employeesArr) => {
                         <p class="employee-extra details">Office Number: ${employeesArr[0].officeNumber}</p>
                     </div>
                 </li>
-                `+ determineEmployee(employeesArr) + `
+                `
+    // ADD IN HERE AN IF STATEMENT CHECKING IF LENGTH OF EMPLOYEES ARRAY IS GREATER THAN 1 AND IF IT IS THEN DO FOR LOOP, IF NOT THEN RETURN NOTHING AND JUST HAVE TOP AND BOTTOM JOIN
+    for(let i = 1; i < employeesArr.length; i++) {
+        newLi = determineEmployee(employeesArr[i])
+        console.log(newLi)
+        mainHtmlTop += newLi; 
+    }
+    var mainHtmlBottom = `
             </ul>
         </div>
     </main>
-    <!--FIND OUT IF NEED THE SCRIPT-->
 </body>
 </html>
 `
+    return mainHtmlTop + mainHtmlBottom;
 }
 
 // Exporting the functions to the module exports
 
 module.exports = generateHtml;
-// module.exports = determineEmployee;
+// module.exports = generateEmployee;
