@@ -35,8 +35,6 @@ const generateEmployee = (employee, employeeExtra, employeeExtraVariable) => {
     return liEmployee;
 };
 
-// NEED TO ADD ON THE CARD THE A HREF FOR THE GITHUB LINK AND EMAIL OPEN TO DEFAULT EMAIL BROWSERs
-
 // Function that returns a template HTML layout
 const generateHtml = (employeesArr) => {
     var mainHtmlTop =  `

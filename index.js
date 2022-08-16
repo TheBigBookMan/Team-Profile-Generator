@@ -14,11 +14,6 @@ var manager;
 var engineer;
 var intern;
 
-
-// NEED TO HAVE TEST JS FILES AS WELL
-
-// CAN TRY DO THE VALIDATION BUT MAYBE LEAVE THAT FOR LATER IF HAVE TIME
-
 // Function that prompts the user about manager information
 const promptManager = () => {
     return inquirer.prompt([{

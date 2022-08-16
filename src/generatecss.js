@@ -1,4 +1,3 @@
-
 // Function that returns the CSS template
 const generateCss = () => {
     return `
@@ -68,7 +67,7 @@ main {
 a:hover {
     color: lightblue;
     }
-`
+`;
 };
 
 // Export the generateCss function to module exports
