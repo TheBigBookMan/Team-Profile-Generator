@@ -28,7 +28,7 @@ const generateEmployee = (employee, employeeExtra, employeeExtraVariable) => {
                     </div>
                     <div class="employee-info">
                         <p class="employee-id details">ID: ${employee.id}</p>
-                        <p class="employee-email details">Email: ${employee.email}</p>
+                        <p class="employee-email details">Email: <a href="mailto:${employee.email}">${employee.email}</a></p>
                         <p class="employee-extra details">${employeeExtra}: ${employeeExtraVariable}</p>
                     </div>
                 </li>`;
@@ -63,7 +63,7 @@ const generateHtml = (employeesArr) => {
                     </div>
                     <div class="employee-info">
                         <p class="employee-id details">ID: ${employeesArr[0].id}</p>
-                        <p class="employee-email details">Email: ${employeesArr[0].email}</p>
+                        <p class="employee-email details">Email: <a href="mailto:${employeesArr[0].email}">${employeesArr[0].email}</a></p>
                         <p class="employee-extra details">Office Number: ${employeesArr[0].officeNumber}</p>
                     </div>
                 </li>
