@@ -19,7 +19,8 @@ The information prompted for the engineer are: name, ID, email and github name.
 #### Intern
 The information prompted for the intern are: name, ID, email and school they are at.
 
-<!--PUT IN SCREENSHOT OF THE USER INPUT WITH A SELECTION OF ENGINEER AND INTERN AND THEN NONE-->
+![](./images/prompts.png)
+
 ### Classes
 After the user has input the information regarding employees, that information is sorted into specific sub-classes- Manager, Engineer and Intern. They are a sub-class of a parent-class titled Employees. These classes are created in separate javascript modules and require exporting and importing between to ensure flow.
 
@@ -29,14 +30,19 @@ There was a pre-made CSS template that will initialize with the HTML file that g
 ### Generate HTML
 There was a pre-made HTML template that will initialize with the CSS file once the user has input all information. There were specific functions that needed to be created to ensure that the information from the different classes could pass through seamlessly without any bugs. the determineEmployee function had to check the getRole() method in the class objects, which would then change certain parts of the HTML render to match to that class. For example, the engineer needed a link to their github account in the class: 'employee-extra' HTML section. The generateHtml function joins the strings of the HTML template with a for loop that iterates over the employees to generate their sections, and then adds on the bottom part of the HTML template.
 
-<!--ADD IN A SCREENSHOT OF THE CODE BLOCK THAT DETERMINES THE ENGINEER GITHUB LINK-->
+![](./images/determineEmployee.png)
 
 ### Client-Side
 Within the webpage of the application, the user is able to click on the engineers github links and then be re-directed to their github webpage. The email address also is clickable and will open up the users default email, to ensure fast contact if necessary.
 
-<!--ADD IN A SCREENSHOT OF THE CLIENTSIDE WEB PAGE WITH THE CLICKABLE EMAIL AND GITHUB-->
+![](./images/clientSide.png)
 
-<!--MAYBE ADD IN THE SAMPLE FOR THE PRJET, JUST DUNNO WHAT THE SAMPLE REALLY IS-->
+## Tests
+Using JEST, I was able to perform node.js tests on the objects and the object methods, which ensured that the code was working and producing what they were expected to.
+
+![](./images/npmTest.png)
+
+## Sample Project
 
 ## GitHub Repository
 <!--ADD IN LINK TO GITHUB REPOSITORY-->
