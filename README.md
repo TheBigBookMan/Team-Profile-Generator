@@ -3,7 +3,7 @@
 This project utilizes the back-end programming language node.js, as well as front end languages- html, css and javascript. The user will be prompted with inputting information about their employees and the program will create a html and css file with the information. The user will be able to interact with information such as email and github accounts for easy access to contacting the employees.
 
 ## Demonstration
-<!--PROVIDE LINK OF THE DEMONSTRATION HERE-->
+https://drive.google.com/file/d/1OURcazg1_q24l2h6Id1PUNoIRHLmJ9tE/view
 
 ## Installation
 ### NPM
@@ -43,6 +43,7 @@ Using JEST, I was able to perform node.js tests on the objects and the object me
 ![](./images/npmTest.png)
 
 ## Sample Project
+Within the sampleFiles folder, there is a sample html and css file that was created from this project that is required by the project submission requirements.
 
 ## GitHub Repository
-<!--ADD IN LINK TO GITHUB REPOSITORY-->
+https://github.com/TheBigBookMan/Team-Profile-Generator
